@@ -12,6 +12,9 @@
 		28094F6F2C7CED5B00CCC80A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28094F6E2C7CED5B00CCC80A /* Assets.xcassets */; };
 		28094F722C7CED5B00CCC80A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28094F712C7CED5B00CCC80A /* Preview Assets.xcassets */; };
 		28094F802C7DBAD200CCC80A /* HomeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28094F7F2C7DBAD200CCC80A /* HomeProtocol.swift */; };
+		28094F882C7DBFF800CCC80A /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28094F872C7DBFF800CCC80A /* HomeRouter.swift */; };
+		28094F8A2C7DC04E00CCC80A /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28094F892C7DC04E00CCC80A /* HomeInteractor.swift */; };
+		28094F8C2C7DC0C000CCC80A /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28094F8B2C7DC0C000CCC80A /* HomePresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +24,9 @@
 		28094F6E2C7CED5B00CCC80A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		28094F712C7CED5B00CCC80A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		28094F7F2C7DBAD200CCC80A /* HomeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProtocol.swift; sourceTree = "<group>"; };
+		28094F872C7DBFF800CCC80A /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
+		28094F892C7DC04E00CCC80A /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
+		28094F8B2C7DC0C000CCC80A /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +122,7 @@
 		28094F822C7DBAFD00CCC80A /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
+				28094F892C7DC04E00CCC80A /* HomeInteractor.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -123,6 +130,7 @@
 		28094F832C7DBB0600CCC80A /* Router */ = {
 			isa = PBXGroup;
 			children = (
+				28094F872C7DBFF800CCC80A /* HomeRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -130,6 +138,7 @@
 		28094F842C7DBB1100CCC80A /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				28094F8B2C7DC0C000CCC80A /* HomePresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -221,7 +230,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				28094F6D2C7CED5A00CCC80A /* HomeView.swift in Sources */,
+				28094F882C7DBFF800CCC80A /* HomeRouter.swift in Sources */,
 				28094F802C7DBAD200CCC80A /* HomeProtocol.swift in Sources */,
+				28094F8C2C7DC0C000CCC80A /* HomePresenter.swift in Sources */,
+				28094F8A2C7DC04E00CCC80A /* HomeInteractor.swift in Sources */,
 				28094F6B2C7CED5A00CCC80A /* MatchMateApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct HomeView: View {
+    @ObservedObject var presenter: HomePresenter
+    
     var body: some View {
         VStack {
             CardView()
@@ -17,7 +19,7 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView()
+    HomeRouter.createModule()
 }
 
 struct CardView: View {

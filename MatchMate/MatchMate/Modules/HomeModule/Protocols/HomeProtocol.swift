@@ -11,10 +11,6 @@ protocol ViewToPresenterProtocol: AnyObject {
     
 }
 
-protocol PresenterToViewProtocol: AnyObject {
-    
-}
-
 protocol PresenterToRouterProtocol: AnyObject {
     
 }

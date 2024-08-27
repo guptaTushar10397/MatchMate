@@ -130,9 +130,9 @@ extension User {
             country: "Anycountry"
         ),
         picture: Picture(
-            large: "https://example.com/large.jpg",
-            medium: "https://example.com/medium.jpg",
-            thumbnail: "https://example.com/thumbnail.jpg"
+            large: "https://randomuser.me/api/portraits/women/89.jpg",
+            medium: "https://randomuser.me/api/portraits/med/women/89.jpg",
+            thumbnail: "https://randomuser.me/api/portraits/thumb/women/89.jpg"
         ),
         backendID: BackendID(
             name: "user",

@@ -8,10 +8,10 @@
 import Foundation
 
 class HomeInteractor {
-    weak var presenter: InteractorToPresenterProtocol?
+    weak var presenter: HomeInteractorToPresenterProtocol?
 }
 
-extension HomeInteractor: PresenterToInteractorProtocol {
+extension HomeInteractor: HomePresenterToInteractorProtocol {
     
     @MainActor func fetchUsers() {
         guard let url = URL(string: "https://randomuser.me/api/?results=10") else { return }

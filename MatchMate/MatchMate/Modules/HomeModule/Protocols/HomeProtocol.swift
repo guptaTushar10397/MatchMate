@@ -7,19 +7,19 @@
 
 import Foundation
 
-protocol ViewToPresenterProtocol: AnyObject {
+protocol HomeViewToPresenterProtocol: AnyObject {
     func viewDidLoad()
 }
 
-protocol PresenterToRouterProtocol: AnyObject {
+protocol HomePresenterToRouterProtocol: AnyObject {
     
 }
 
-protocol PresenterToInteractorProtocol: AnyObject {
+protocol HomePresenterToInteractorProtocol: AnyObject {
     func fetchUsers()
 }
 
-protocol InteractorToPresenterProtocol: AnyObject {
+protocol HomeInteractorToPresenterProtocol: AnyObject {
     func didSuccessfullyReceivedUsers(_ users: [User])
     func didFailToReceiveUsersData(_ error: Error)
 }

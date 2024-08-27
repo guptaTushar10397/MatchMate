@@ -8,20 +8,20 @@
 import Foundation
 
 class HomePresenter: ObservableObject {
-    var interactor: PresenterToInteractorProtocol?
-    var router: PresenterToRouterProtocol?
+    var interactor: HomePresenterToInteractorProtocol?
+    var router: HomePresenterToRouterProtocol?
     
     @Published var users: [User] = []
 }
 
-extension HomePresenter: ViewToPresenterProtocol {
+extension HomePresenter: HomeViewToPresenterProtocol {
     
     func viewDidLoad() {
         fetchData()
     }
 }
 
-extension HomePresenter: InteractorToPresenterProtocol {
+extension HomePresenter: HomeInteractorToPresenterProtocol {
     func didSuccessfullyReceivedUsers(_ users: [User]) {
         self.users = users
     }

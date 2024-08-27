@@ -9,6 +9,19 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
+        VStack {
+            CardView()
+                .padding(.horizontal)
+        }
+    }
+}
+
+#Preview {
+    HomeView()
+}
+
+struct CardView: View {
+    var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 10)
                 .foregroundStyle(Color.white)
@@ -60,11 +73,6 @@ struct HomeView: View {
                 }
             }
         }
-        .frame(width: .infinity, height: 320)
-        .padding(.horizontal)
+        .frame(height: 320)
     }
-}
-
-#Preview {
-    HomeView()
 }

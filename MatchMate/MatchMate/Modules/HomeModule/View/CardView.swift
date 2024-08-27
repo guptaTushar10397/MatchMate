@@ -19,9 +19,25 @@ struct CardView: View {
             VStack(spacing: 25) {
                 
                 VStack(spacing: 20) {
-                    Image(systemName: "person")
-                        .resizable()
-                        .frame(width: 80, height: 80)
+                    
+                    AsyncImage(url: URL(string: user.picture?.medium ?? "")) { phase in
+                        switch phase {
+                        case .empty:
+                            ProgressView()
+                        case .success(let image):
+                            image
+                                .resizable()
+                                .scaledToFit()
+                        case .failure:
+                            Image(systemName: "exclamationmark.icloud")
+                                .resizable()
+                                .scaledToFit()
+                        @unknown default:
+                            EmptyView()
+                        }
+                    }
+                    .frame(width: 100, height: 100)
+                    .clipShape(Circle())
                     
                     VStack(spacing: 10) {
                         Text(user.name?.fullName ?? "")

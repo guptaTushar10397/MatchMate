@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class HomePresenter: ObservableObject {
     var interactor: HomePresenterToInteractorProtocol?
@@ -23,6 +24,10 @@ extension HomePresenter: HomeViewToPresenterProtocol {
         hasLoaded = true
         
         fetchData()
+    }
+    
+    func navigateToDetail(for user: User) -> AnyView {
+        return AnyView(router?.navigateToDetail(for: user))
     }
     
     func handleAcceptAction(for user: User) {

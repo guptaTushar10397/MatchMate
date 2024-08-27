@@ -16,7 +16,7 @@ struct HomeView: View {
                 LazyVStack {
                     ForEach(presenter.users) { user in
                         NavigationLink {
-                            DetailRouter.createModule(withUser: user)
+                            presenter.navigateToDetail(for: user)
                         } label: {
                             CardView(user: user,
                                      didTapAcceptButton: { presenter.handleAcceptAction(for: user) },

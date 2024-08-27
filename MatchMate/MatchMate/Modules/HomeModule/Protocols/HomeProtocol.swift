@@ -6,15 +6,17 @@
 //
 
 import Foundation
+import SwiftUI
 
 protocol HomeViewToPresenterProtocol: AnyObject {
     func viewDidLoad()
     func handleAcceptAction(for user: User)
     func handleRejectAction(for user: User) 
+    func navigateToDetail(for user: User) -> AnyView
 }
 
 protocol HomePresenterToRouterProtocol: AnyObject {
-    
+    func navigateToDetail(for user: User) -> AnyView
 }
 
 protocol HomePresenterToInteractorProtocol: AnyObject {

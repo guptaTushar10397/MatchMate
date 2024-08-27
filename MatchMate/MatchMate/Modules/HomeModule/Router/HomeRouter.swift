@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class HomeRouter: HomePresenterToRouterProtocol {
+class HomeRouter {
     
     static func createModule() -> some View {
         let router = HomeRouter()
@@ -22,5 +22,12 @@ class HomeRouter: HomePresenterToRouterProtocol {
         interactor.presenter = presenter
         
         return view
+    }
+}
+
+extension HomeRouter: HomePresenterToRouterProtocol {
+    
+    func navigateToDetail(for user: User) -> AnyView {
+        return AnyView(DetailRouter.createModule(withUser: user))
     }
 }

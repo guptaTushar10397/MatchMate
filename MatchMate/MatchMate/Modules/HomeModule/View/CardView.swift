@@ -53,27 +53,39 @@ struct CardView: View {
                     }
                 }
                 
-                HStack(spacing: 40) {
-                    Button {
+                if let userAction = user.userAction {
+                    RoundedRectangle(cornerRadius: 10)
+                        .foregroundStyle(.teal)
+                        .overlay {
+                            Text(userAction.rawValue)
+                                .font(.title2)
+                                .fontWeight(.medium)
+                                .foregroundStyle(.white)
+                        }
+                        .frame(height: 80)
+                } else {
+                    HStack(spacing: 40) {
+                        Button {
+                            
+                        } label: {
+                            Image(systemName: "xmark")
+                                .font(.system(size: 24))
+                                .foregroundColor(.red)
+                                .padding()
+                                .background(Circle().fill(Color.white))
+                                .shadow(radius: 5)
+                        }
                         
-                    } label: {
-                        Image(systemName: "xmark")
-                            .font(.system(size: 24))
-                            .foregroundColor(.red)
-                            .padding()
-                            .background(Circle().fill(Color.white))
-                            .shadow(radius: 5)
-                    }
-                    
-                    Button {
-                        
-                    } label: {
-                        Image(systemName: "checkmark")
-                            .font(.system(size: 24))
-                            .foregroundColor(.green)
-                            .padding()
-                            .background(Circle().fill(Color.white))
-                            .shadow(radius: 5)
+                        Button {
+                            
+                        } label: {
+                            Image(systemName: "checkmark")
+                                .font(.system(size: 24))
+                                .foregroundColor(.green)
+                                .padding()
+                                .background(Circle().fill(Color.white))
+                                .shadow(radius: 5)
+                        }
                     }
                 }
             }
@@ -83,5 +95,6 @@ struct CardView: View {
 }
 
 #Preview {
-    CardView(user: User.mockUser)
+//    CardView(user: User.mockUser)
+    CardView(user: .mockUserAccepted)
 }

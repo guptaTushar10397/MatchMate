@@ -7,6 +7,11 @@
 
 import Foundation
 
+enum UserAction: String {
+    case accepted = "Accepted"
+    case rejected = "Declined"
+}
+
 // MARK: - UserResponse Model
 struct UserResponse: Codable {
     var results: [User]?
@@ -15,6 +20,7 @@ struct UserResponse: Codable {
 // MARK: - User Model
 struct User: Codable, Identifiable {
     var id: String = UUID().uuidString
+    var userAction: UserAction? = nil
     let name: Name?
     let location: Location?
     let picture: Picture?
@@ -38,7 +44,8 @@ struct User: Codable, Identifiable {
         self.picture = try container.decodeIfPresent(Picture.self, forKey: .picture)
     }
     
-    init(name: Name?, location: Location?, picture: Picture?, backendID: BackendID?) {
+    init(userAction: UserAction? = nil, name: Name?, location: Location?, picture: Picture?, backendID: BackendID?) {
+        self.userAction = userAction
         self.name = name
         self.location = location
         self.picture = picture
@@ -115,6 +122,60 @@ struct BackendID: Codable {
 extension User {
     
     static let mockUser = User(
+        name: Name(
+            title: "Mrs.",
+            first: "María Cristina",
+            last: "Ceja"
+        ),
+        location: Location(
+            street: Street(
+                number: 123,
+                name: "Main St"
+            ),
+            city: "Anytown",
+            state: "Anystate",
+            country: "Anycountry"
+        ),
+        picture: Picture(
+            large: "https://randomuser.me/api/portraits/women/89.jpg",
+            medium: "https://randomuser.me/api/portraits/med/women/89.jpg",
+            thumbnail: "https://randomuser.me/api/portraits/thumb/women/89.jpg"
+        ),
+        backendID: BackendID(
+            name: "user",
+            value: "12345"
+        )
+    )
+    
+    static let mockUserAccepted = User(
+        userAction: .accepted,
+        name: Name(
+            title: "Mrs.",
+            first: "María Cristina",
+            last: "Ceja"
+        ),
+        location: Location(
+            street: Street(
+                number: 123,
+                name: "Main St"
+            ),
+            city: "Anytown",
+            state: "Anystate",
+            country: "Anycountry"
+        ),
+        picture: Picture(
+            large: "https://randomuser.me/api/portraits/women/89.jpg",
+            medium: "https://randomuser.me/api/portraits/med/women/89.jpg",
+            thumbnail: "https://randomuser.me/api/portraits/thumb/women/89.jpg"
+        ),
+        backendID: BackendID(
+            name: "user",
+            value: "12345"
+        )
+    )
+    
+    static let mockUserRejected = User(
+        userAction: .rejected,
         name: Name(
             title: "Mrs.",
             first: "María Cristina",

@@ -18,7 +18,10 @@ struct HomeView: View {
                         NavigationLink {
                             DetailRouter.createModule(withUser: user)
                         } label: {
-                            CardView(user: user)
+                            CardView(user: user,
+                                     didTapAcceptButton: { presenter.handleAcceptAction(for: user) },
+                                     didTaponRejectButton: { presenter.handleRejectAction(for: user) }
+                            )
                                 .padding(.horizontal)
                         }
                     }

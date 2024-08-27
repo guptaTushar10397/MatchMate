@@ -24,6 +24,24 @@ extension HomePresenter: HomeViewToPresenterProtocol {
         
         fetchData()
     }
+    
+    func handleAcceptAction(for user: User) {
+        guard let indexOfUser = users.firstIndex(where: {$0.id == user.id}) else {
+            return
+        }
+        var newObject = users[indexOfUser]
+        newObject.userAction = .accepted
+        users[indexOfUser] = newObject
+    }
+    
+    func handleRejectAction(for user: User) {
+        guard let indexOfUser = users.firstIndex(where: {$0.id == user.id}) else {
+            return
+        }
+        var newObject = users[indexOfUser]
+        newObject.userAction = .rejected
+        users[indexOfUser] = newObject
+    }
 }
 
 extension HomePresenter: HomeInteractorToPresenterProtocol {

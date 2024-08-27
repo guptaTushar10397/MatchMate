@@ -53,7 +53,7 @@ struct DetailView: View {
                             .fontWeight(.medium)
                             .foregroundStyle(.white)
                     }
-                    .frame(height: 80)
+                    .frame(height: 60)
             } else {
                 HStack(spacing: 40) {
                     Button {

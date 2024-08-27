@@ -9,6 +9,8 @@ import Foundation
 
 protocol HomeViewToPresenterProtocol: AnyObject {
     func viewDidLoad()
+    func handleAcceptAction(for user: User)
+    func handleRejectAction(for user: User) 
 }
 
 protocol HomePresenterToRouterProtocol: AnyObject {

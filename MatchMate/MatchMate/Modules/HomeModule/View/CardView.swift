@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CardView: View {
     let user: User
+    let didTapAcceptButton: () -> Void
+    let didTaponRejectButton: () -> Void
     
     var body: some View {
         ZStack {
@@ -62,11 +64,12 @@ struct CardView: View {
                                 .fontWeight(.medium)
                                 .foregroundStyle(.white)
                         }
-                        .frame(height: 80)
+                        .frame(height: 60)
+                        .padding(.horizontal)
                 } else {
                     HStack(spacing: 40) {
                         Button {
-                            
+                            didTaponRejectButton()
                         } label: {
                             Image(systemName: "xmark")
                                 .font(.system(size: 24))
@@ -77,7 +80,7 @@ struct CardView: View {
                         }
                         
                         Button {
-                            
+                            didTapAcceptButton()
                         } label: {
                             Image(systemName: "checkmark")
                                 .font(.system(size: 24))
@@ -95,6 +98,7 @@ struct CardView: View {
 }
 
 #Preview {
-//    CardView(user: User.mockUser)
-    CardView(user: .mockUserAccepted)
+    CardView(user: .mockUserAccepted,
+             didTapAcceptButton: { },
+             didTaponRejectButton: { })
 }

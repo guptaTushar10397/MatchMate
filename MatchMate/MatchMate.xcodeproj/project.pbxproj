@@ -77,6 +77,7 @@
 			children = (
 				28094F792C7DBA3300CCC80A /* Application */,
 				282515662C7E43F300DDC5E3 /* Managers */,
+				282515802C7E6E4000DDC5E3 /* Models */,
 				28094F7C2C7DBA7E00CCC80A /* Modules */,
 				28094F7B2C7DBA6900CCC80A /* Resources */,
 			);
@@ -113,7 +114,6 @@
 			isa = PBXGroup;
 			children = (
 				28094F7E2C7DBAA700CCC80A /* Protocols */,
-				28094F812C7DBAEC00CCC80A /* Entity */,
 				28094F832C7DBB0600CCC80A /* Router */,
 				28094F822C7DBAFD00CCC80A /* Interactor */,
 				28094F842C7DBB1100CCC80A /* Presenter */,
@@ -128,14 +128,6 @@
 				28094F7F2C7DBAD200CCC80A /* HomeProtocol.swift */,
 			);
 			path = Protocols;
-			sourceTree = "<group>";
-		};
-		28094F812C7DBAEC00CCC80A /* Entity */ = {
-			isa = PBXGroup;
-			children = (
-				282515692C7E44F800DDC5E3 /* UserResonseModel.swift */,
-			);
-			path = Entity;
 			sourceTree = "<group>";
 		};
 		28094F822C7DBAFD00CCC80A /* Interactor */ = {
@@ -237,6 +229,14 @@
 				282515742C7E5BF000DDC5E3 /* DetailProtocol.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		282515802C7E6E4000DDC5E3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				282515692C7E44F800DDC5E3 /* UserResonseModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

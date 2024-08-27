@@ -17,6 +17,7 @@
 		28094F8C2C7DC0C000CCC80A /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28094F8B2C7DC0C000CCC80A /* HomePresenter.swift */; };
 		282515682C7E441E00DDC5E3 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282515672C7E441E00DDC5E3 /* APIManager.swift */; };
 		2825156A2C7E44F800DDC5E3 /* UserResonseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282515692C7E44F800DDC5E3 /* UserResonseModel.swift */; };
+		2825156C2C7E54A800DDC5E3 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2825156B2C7E54A800DDC5E3 /* CardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		28094F8B2C7DC0C000CCC80A /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		282515672C7E441E00DDC5E3 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		282515692C7E44F800DDC5E3 /* UserResonseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResonseModel.swift; sourceTree = "<group>"; };
+		2825156B2C7E54A800DDC5E3 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				28094F6C2C7CED5A00CCC80A /* HomeView.swift */,
+				2825156B2C7E54A800DDC5E3 /* CardView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -244,6 +247,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2825156A2C7E44F800DDC5E3 /* UserResonseModel.swift in Sources */,
+				2825156C2C7E54A800DDC5E3 /* CardView.swift in Sources */,
 				28094F6D2C7CED5A00CCC80A /* HomeView.swift in Sources */,
 				28094F882C7DBFF800CCC80A /* HomeRouter.swift in Sources */,
 				28094F802C7DBAD200CCC80A /* HomeProtocol.swift in Sources */,

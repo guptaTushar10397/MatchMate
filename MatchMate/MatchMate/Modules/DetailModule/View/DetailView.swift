@@ -11,10 +11,69 @@ struct DetailView: View {
     @ObservedObject var presenter: DetailPresenter
     
     var body: some View {
-        Text(presenter.user?.name?.fullName ?? "")
-            .onAppear {
-                presenter.viewDidLoad()
+        VStack {
+            AsyncImage(url: URL(string: presenter.user?.picture?.large ?? "")) { phase in
+                switch phase {
+                case .empty:
+                    ProgressView()
+                case .success(let image):
+                    image
+                        .resizable()
+                        .scaledToFit()
+                case .failure:
+                    Image(systemName: "exclamationmark.icloud")
+                        .resizable()
+                        .scaledToFit()
+                @unknown default:
+                    EmptyView()
+                }
             }
+            .clipShape(RoundedRectangle(cornerRadius: 20))
+            .shadow(color: .teal, radius: 20)
+            
+            VStack(spacing: 10) {
+                Text(presenter.user?.name?.fullName ?? "")
+                    .font(.title)
+                    .fontWeight(.semibold)
+                    .foregroundStyle(.teal)
+                
+                Text(presenter.user?.location?.address ?? "")
+                    .font(.callout)
+                    .fontWeight(.medium)
+                    .multilineTextAlignment(.center)
+                    .foregroundStyle(.gray)
+            }
+            
+            HStack(spacing: 40) {
+                Button {
+                    
+                } label: {
+                    Image(systemName: "xmark")
+                        .font(.system(size: 24))
+                        .foregroundColor(.red)
+                        .padding()
+                        .background(Circle().fill(Color.white))
+                        .shadow(radius: 5)
+                }
+                
+                Button {
+                    
+                } label: {
+                    Image(systemName: "checkmark")
+                        .font(.system(size: 24))
+                        .foregroundColor(.green)
+                        .padding()
+                        .background(Circle().fill(Color.white))
+                        .shadow(radius: 5)
+                }
+            }
+            
+            Spacer()
+        }
+        .padding(.horizontal)
+        .onAppear {
+            presenter.viewDidLoad()
+        }
     }
 }
 

@@ -116,9 +116,9 @@ extension User {
     
     static let mockUser = User(
         name: Name(
-            title: "Mr.",
-            first: "John",
-            last: "Doe"
+            title: "Mrs.",
+            first: "María Cristina",
+            last: "Ceja"
         ),
         location: Location(
             street: Street(

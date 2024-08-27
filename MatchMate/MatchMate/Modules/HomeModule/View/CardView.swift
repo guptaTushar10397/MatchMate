@@ -20,7 +20,7 @@ struct CardView: View {
                 
                 VStack(spacing: 20) {
                     
-                    AsyncImage(url: URL(string: user.picture?.medium ?? "")) { phase in
+                    AsyncImage(url: URL(string: user.picture?.large ?? "")) { phase in
                         switch phase {
                         case .empty:
                             ProgressView()
@@ -80,4 +80,8 @@ struct CardView: View {
         }
         .frame(height: 320)
     }
+}
+
+#Preview {
+    CardView(user: User.mockUser)
 }

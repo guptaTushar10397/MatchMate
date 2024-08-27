@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ViewToPresenterProtocol: AnyObject {
-    
+    func viewDidLoad()
 }
 
 protocol PresenterToRouterProtocol: AnyObject {
@@ -16,7 +16,7 @@ protocol PresenterToRouterProtocol: AnyObject {
 }
 
 protocol PresenterToInteractorProtocol: AnyObject {
-   
+    func fetchData()
 }
 
 protocol InteractorToPresenterProtocol: AnyObject {

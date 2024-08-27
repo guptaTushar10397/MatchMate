@@ -15,6 +15,9 @@ struct HomeView: View {
             CardView()
                 .padding(.horizontal)
         }
+        .onAppear {
+            presenter.viewDidLoad()
+        }
     }
 }
 

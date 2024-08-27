@@ -15,8 +15,18 @@ class HomePresenter: ObservableObject {
 
 extension HomePresenter: ViewToPresenterProtocol {
     
+    func viewDidLoad() {
+        
+    }
 }
 
 extension HomePresenter: InteractorToPresenterProtocol {
     
+}
+
+private extension HomePresenter {
+    
+    func fetchData() {
+        interactor?.fetchData()
+    }
 }

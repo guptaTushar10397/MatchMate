@@ -7,7 +7,13 @@
 
 import Foundation
 
-class HomeInteractor: PresenterToInteractorProtocol {
+class HomeInteractor {
     weak var presenter: InteractorToPresenterProtocol?
 }
 
+extension HomeInteractor: PresenterToInteractorProtocol {
+    
+    func fetchData() {
+        // TODO: API Calls
+    }
+}

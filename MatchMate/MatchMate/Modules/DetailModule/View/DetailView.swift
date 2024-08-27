@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DetailView: View {
-    @StateObject var presenter: DetailPresenter
+    @ObservedObject var presenter: DetailPresenter
     
     var body: some View {
         Text(presenter.user?.name?.fullName ?? "")

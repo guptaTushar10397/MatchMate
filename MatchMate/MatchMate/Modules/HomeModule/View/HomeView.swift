@@ -8,15 +8,19 @@
 import SwiftUI
 
 struct HomeView: View {
-    @StateObject var presenter: HomePresenter
+    @ObservedObject var presenter: HomePresenter
     
     var body: some View {
         NavigationView {
             ScrollView {
                 LazyVStack {
                     ForEach(presenter.users) { user in
-                        CardView(user: user)
-                            .padding(.horizontal)
+                        NavigationLink {
+                            DetailRouter.createModule(withUser: user)
+                        } label: {
+                            CardView(user: user)
+                                .padding(.horizontal)
+                        }
                     }
                     .padding(.vertical)
                 }

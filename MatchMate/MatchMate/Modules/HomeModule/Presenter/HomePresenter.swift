@@ -12,11 +12,16 @@ class HomePresenter: ObservableObject {
     var router: HomePresenterToRouterProtocol?
     
     @Published var users: [User] = []
+    
+    private var hasLoaded: Bool = false
 }
 
 extension HomePresenter: HomeViewToPresenterProtocol {
     
     func viewDidLoad() {
+        guard !hasLoaded else { return }
+        hasLoaded = true
+        
         fetchData()
     }
 }

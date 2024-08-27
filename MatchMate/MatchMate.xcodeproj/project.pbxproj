@@ -8,17 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		28094F6B2C7CED5A00CCC80A /* MatchMateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28094F6A2C7CED5A00CCC80A /* MatchMateApp.swift */; };
-		28094F6D2C7CED5A00CCC80A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28094F6C2C7CED5A00CCC80A /* ContentView.swift */; };
+		28094F6D2C7CED5A00CCC80A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28094F6C2C7CED5A00CCC80A /* HomeView.swift */; };
 		28094F6F2C7CED5B00CCC80A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28094F6E2C7CED5B00CCC80A /* Assets.xcassets */; };
 		28094F722C7CED5B00CCC80A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28094F712C7CED5B00CCC80A /* Preview Assets.xcassets */; };
+		28094F802C7DBAD200CCC80A /* HomeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28094F7F2C7DBAD200CCC80A /* HomeProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		28094F672C7CED5A00CCC80A /* MatchMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MatchMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28094F6A2C7CED5A00CCC80A /* MatchMateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchMateApp.swift; sourceTree = "<group>"; };
-		28094F6C2C7CED5A00CCC80A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		28094F6C2C7CED5A00CCC80A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		28094F6E2C7CED5B00CCC80A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		28094F712C7CED5B00CCC80A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		28094F7F2C7DBAD200CCC80A /* HomeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,15 +53,96 @@
 		28094F692C7CED5A00CCC80A /* MatchMate */ = {
 			isa = PBXGroup;
 			children = (
-				28094F6A2C7CED5A00CCC80A /* MatchMateApp.swift */,
-				28094F6C2C7CED5A00CCC80A /* ContentView.swift */,
-				28094F6E2C7CED5B00CCC80A /* Assets.xcassets */,
-				28094F702C7CED5B00CCC80A /* Preview Content */,
+				28094F792C7DBA3300CCC80A /* Application */,
+				28094F7C2C7DBA7E00CCC80A /* Modules */,
+				28094F7B2C7DBA6900CCC80A /* Resources */,
 			);
 			path = MatchMate;
 			sourceTree = "<group>";
 		};
-		28094F702C7CED5B00CCC80A /* Preview Content */ = {
+		28094F792C7DBA3300CCC80A /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				28094F6A2C7CED5A00CCC80A /* MatchMateApp.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		28094F7B2C7DBA6900CCC80A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				28094F6E2C7CED5B00CCC80A /* Assets.xcassets */,
+				28094F862C7DBC0400CCC80A /* Preview Content */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		28094F7C2C7DBA7E00CCC80A /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				28094F7D2C7DBA9300CCC80A /* HomeModule */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		28094F7D2C7DBA9300CCC80A /* HomeModule */ = {
+			isa = PBXGroup;
+			children = (
+				28094F7E2C7DBAA700CCC80A /* Protocols */,
+				28094F812C7DBAEC00CCC80A /* Entity */,
+				28094F832C7DBB0600CCC80A /* Router */,
+				28094F822C7DBAFD00CCC80A /* Interactor */,
+				28094F842C7DBB1100CCC80A /* Presenter */,
+				28094F852C7DBB1800CCC80A /* View */,
+			);
+			path = HomeModule;
+			sourceTree = "<group>";
+		};
+		28094F7E2C7DBAA700CCC80A /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				28094F7F2C7DBAD200CCC80A /* HomeProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		28094F812C7DBAEC00CCC80A /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		28094F822C7DBAFD00CCC80A /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		28094F832C7DBB0600CCC80A /* Router */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		28094F842C7DBB1100CCC80A /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		28094F852C7DBB1800CCC80A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				28094F6C2C7CED5A00CCC80A /* HomeView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		28094F862C7DBC0400CCC80A /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
 				28094F712C7CED5B00CCC80A /* Preview Assets.xcassets */,
@@ -137,7 +220,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28094F6D2C7CED5A00CCC80A /* ContentView.swift in Sources */,
+				28094F6D2C7CED5A00CCC80A /* HomeView.swift in Sources */,
+				28094F802C7DBAD200CCC80A /* HomeProtocol.swift in Sources */,
 				28094F6B2C7CED5A00CCC80A /* MatchMateApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -271,7 +355,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"MatchMate/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"MatchMate/Resources/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -300,7 +384,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"MatchMate/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"MatchMate/Resources/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

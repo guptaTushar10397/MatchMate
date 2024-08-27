@@ -37,6 +37,13 @@ struct User: Codable, Identifiable {
         self.location = try container.decodeIfPresent(Location.self, forKey: .location)
         self.picture = try container.decodeIfPresent(Picture.self, forKey: .picture)
     }
+    
+    init(name: Name?, location: Location?, picture: Picture?, backendID: BackendID?) {
+        self.name = name
+        self.location = location
+        self.picture = picture
+        self.backendID = backendID
+    }
 }
 
 
@@ -102,5 +109,35 @@ struct Street: Codable {
 struct BackendID: Codable {
     let name: String?
     let value: String?
+}
+
+// MARK: - Mock User
+extension User {
+    
+    static let mockUser = User(
+        name: Name(
+            title: "Mr.",
+            first: "John",
+            last: "Doe"
+        ),
+        location: Location(
+            street: Street(
+                number: 123,
+                name: "Main St"
+            ),
+            city: "Anytown",
+            state: "Anystate",
+            country: "Anycountry"
+        ),
+        picture: Picture(
+            large: "https://example.com/large.jpg",
+            medium: "https://example.com/medium.jpg",
+            thumbnail: "https://example.com/thumbnail.jpg"
+        ),
+        backendID: BackendID(
+            name: "user",
+            value: "12345"
+        )
+    )
 }
 

@@ -9,9 +9,9 @@ import SwiftUI
 
 class DetailRouter: DetailPresenterToRouterProtocol {
     
-    static func createModule() -> some View {
+     static func createModule(withUser user: User) -> some View {
         let router = DetailRouter()
-        let interactor = DetailInteractor()
+        let interactor = DetailInteractor(user)
         let presenter = DetailPresenter()
         
         let view = DetailView(presenter: presenter)

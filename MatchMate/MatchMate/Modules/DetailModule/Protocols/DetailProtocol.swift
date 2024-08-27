@@ -8,7 +8,7 @@
 import Foundation
 
 protocol DetailViewToPresenterProtocol: AnyObject {
-
+    func viewDidLoad()
 }
 
 protocol DetailPresenterToRouterProtocol: AnyObject {
@@ -16,9 +16,9 @@ protocol DetailPresenterToRouterProtocol: AnyObject {
 }
 
 protocol DetailPresenterToInteractorProtocol: AnyObject {
-    
+    func fetchUser()
 }
 
 protocol DetailInteractorToPresenterProtocol: AnyObject {
-
+    func didSuccessfullyReceivedUser(_ user: User)
 }

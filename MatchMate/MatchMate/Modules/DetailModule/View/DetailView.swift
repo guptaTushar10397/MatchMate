@@ -11,10 +11,13 @@ struct DetailView: View {
     @StateObject var presenter: DetailPresenter
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text(presenter.user?.name?.fullName ?? "")
+            .onAppear {
+                presenter.viewDidLoad()
+            }
     }
 }
 
 #Preview {
-    DetailRouter.createModule()
+    DetailRouter.createModule(withUser: User.mockUser)
 }

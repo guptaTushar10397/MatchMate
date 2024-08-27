@@ -18,6 +18,11 @@
 		282515682C7E441E00DDC5E3 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282515672C7E441E00DDC5E3 /* APIManager.swift */; };
 		2825156A2C7E44F800DDC5E3 /* UserResonseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282515692C7E44F800DDC5E3 /* UserResonseModel.swift */; };
 		2825156C2C7E54A800DDC5E3 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2825156B2C7E54A800DDC5E3 /* CardView.swift */; };
+		282515752C7E5BF000DDC5E3 /* DetailProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282515742C7E5BF000DDC5E3 /* DetailProtocol.swift */; };
+		282515792C7E5D3F00DDC5E3 /* DetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282515782C7E5D3F00DDC5E3 /* DetailRouter.swift */; };
+		2825157B2C7E5D6F00DDC5E3 /* DetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2825157A2C7E5D6F00DDC5E3 /* DetailInteractor.swift */; };
+		2825157D2C7E5DA900DDC5E3 /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2825157C2C7E5DA900DDC5E3 /* DetailPresenter.swift */; };
+		2825157F2C7E5DFB00DDC5E3 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2825157E2C7E5DFB00DDC5E3 /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +38,11 @@
 		282515672C7E441E00DDC5E3 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		282515692C7E44F800DDC5E3 /* UserResonseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResonseModel.swift; sourceTree = "<group>"; };
 		2825156B2C7E54A800DDC5E3 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		282515742C7E5BF000DDC5E3 /* DetailProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProtocol.swift; sourceTree = "<group>"; };
+		282515782C7E5D3F00DDC5E3 /* DetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRouter.swift; sourceTree = "<group>"; };
+		2825157A2C7E5D6F00DDC5E3 /* DetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInteractor.swift; sourceTree = "<group>"; };
+		2825157C2C7E5DA900DDC5E3 /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
+		2825157E2C7E5DFB00DDC5E3 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				28094F7D2C7DBA9300CCC80A /* HomeModule */,
+				2825156D2C7E5B8000DDC5E3 /* DetailModule */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -176,6 +187,58 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		2825156D2C7E5B8000DDC5E3 /* DetailModule */ = {
+			isa = PBXGroup;
+			children = (
+				282515732C7E5BD500DDC5E3 /* Protocols */,
+				282515712C7E5BC500DDC5E3 /* Router */,
+				282515702C7E5BB300DDC5E3 /* Interactor */,
+				2825156F2C7E5BA300DDC5E3 /* Presenter */,
+				2825156E2C7E5B9600DDC5E3 /* View */,
+			);
+			path = DetailModule;
+			sourceTree = "<group>";
+		};
+		2825156E2C7E5B9600DDC5E3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2825157E2C7E5DFB00DDC5E3 /* DetailView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2825156F2C7E5BA300DDC5E3 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				2825157C2C7E5DA900DDC5E3 /* DetailPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		282515702C7E5BB300DDC5E3 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				2825157A2C7E5D6F00DDC5E3 /* DetailInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		282515712C7E5BC500DDC5E3 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				282515782C7E5D3F00DDC5E3 /* DetailRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		282515732C7E5BD500DDC5E3 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				282515742C7E5BF000DDC5E3 /* DetailProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -247,12 +310,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				2825156A2C7E44F800DDC5E3 /* UserResonseModel.swift in Sources */,
+				282515792C7E5D3F00DDC5E3 /* DetailRouter.swift in Sources */,
 				2825156C2C7E54A800DDC5E3 /* CardView.swift in Sources */,
+				2825157F2C7E5DFB00DDC5E3 /* DetailView.swift in Sources */,
+				2825157B2C7E5D6F00DDC5E3 /* DetailInteractor.swift in Sources */,
 				28094F6D2C7CED5A00CCC80A /* HomeView.swift in Sources */,
 				28094F882C7DBFF800CCC80A /* HomeRouter.swift in Sources */,
 				28094F802C7DBAD200CCC80A /* HomeProtocol.swift in Sources */,
 				28094F8C2C7DC0C000CCC80A /* HomePresenter.swift in Sources */,
+				282515752C7E5BF000DDC5E3 /* DetailProtocol.swift in Sources */,
 				28094F8A2C7DC04E00CCC80A /* HomeInteractor.swift in Sources */,
+				2825157D2C7E5DA900DDC5E3 /* DetailPresenter.swift in Sources */,
 				28094F6B2C7CED5A00CCC80A /* MatchMateApp.swift in Sources */,
 				282515682C7E441E00DDC5E3 /* APIManager.swift in Sources */,
 			);

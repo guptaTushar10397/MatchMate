@@ -12,8 +12,13 @@ struct HomeView: View {
     
     var body: some View {
         VStack {
-            CardView()
-                .padding(.horizontal)
+            ScrollView {
+                ForEach(presenter.users) { user in
+                    CardView(user: user)
+                        .padding(.horizontal)
+                }
+            }
+            
         }
         .onAppear {
             presenter.viewDidLoad()
@@ -26,6 +31,8 @@ struct HomeView: View {
 }
 
 struct CardView: View {
+    let user: User
+    
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 10)
@@ -40,12 +47,12 @@ struct CardView: View {
                         .frame(width: 80, height: 80)
                     
                     VStack(spacing: 10) {
-                        Text("Tushar Gupta")
+                        Text(user.name?.fullName ?? "")
                             .font(.title)
                             .fontWeight(.semibold)
                             .foregroundStyle(.teal)
                         
-                        Text("Plot No GH-02/A, Sector 16, Vaidpura, Greater Noida, Ghaziabad, Uttar Pradesh 201309")
+                        Text(user.location?.address ?? "")
                             .font(.callout)
                             .fontWeight(.medium)
                             .multilineTextAlignment(.center)

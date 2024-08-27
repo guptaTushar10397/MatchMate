@@ -15,6 +15,8 @@
 		28094F882C7DBFF800CCC80A /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28094F872C7DBFF800CCC80A /* HomeRouter.swift */; };
 		28094F8A2C7DC04E00CCC80A /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28094F892C7DC04E00CCC80A /* HomeInteractor.swift */; };
 		28094F8C2C7DC0C000CCC80A /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28094F8B2C7DC0C000CCC80A /* HomePresenter.swift */; };
+		282515682C7E441E00DDC5E3 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282515672C7E441E00DDC5E3 /* APIManager.swift */; };
+		2825156A2C7E44F800DDC5E3 /* UserResonseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282515692C7E44F800DDC5E3 /* UserResonseModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,8 @@
 		28094F872C7DBFF800CCC80A /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 		28094F892C7DC04E00CCC80A /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		28094F8B2C7DC0C000CCC80A /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		282515672C7E441E00DDC5E3 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		282515692C7E44F800DDC5E3 /* UserResonseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResonseModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				28094F792C7DBA3300CCC80A /* Application */,
+				282515662C7E43F300DDC5E3 /* Managers */,
 				28094F7C2C7DBA7E00CCC80A /* Modules */,
 				28094F7B2C7DBA6900CCC80A /* Resources */,
 			);
@@ -115,6 +120,7 @@
 		28094F812C7DBAEC00CCC80A /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				282515692C7E44F800DDC5E3 /* UserResonseModel.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -157,6 +163,14 @@
 				28094F712C7CED5B00CCC80A /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		282515662C7E43F300DDC5E3 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				282515672C7E441E00DDC5E3 /* APIManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,12 +243,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2825156A2C7E44F800DDC5E3 /* UserResonseModel.swift in Sources */,
 				28094F6D2C7CED5A00CCC80A /* HomeView.swift in Sources */,
 				28094F882C7DBFF800CCC80A /* HomeRouter.swift in Sources */,
 				28094F802C7DBAD200CCC80A /* HomeProtocol.swift in Sources */,
 				28094F8C2C7DC0C000CCC80A /* HomePresenter.swift in Sources */,
 				28094F8A2C7DC04E00CCC80A /* HomeInteractor.swift in Sources */,
 				28094F6B2C7CED5A00CCC80A /* MatchMateApp.swift in Sources */,
+				282515682C7E441E00DDC5E3 /* APIManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

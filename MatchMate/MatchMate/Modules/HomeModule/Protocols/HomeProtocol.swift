@@ -16,9 +16,10 @@ protocol PresenterToRouterProtocol: AnyObject {
 }
 
 protocol PresenterToInteractorProtocol: AnyObject {
-    func fetchData()
+    func fetchUsers()
 }
 
 protocol InteractorToPresenterProtocol: AnyObject {
-    
+    func didSuccessfullyReceivedUsers(_ users: [User])
+    func didFailToReceiveUsersData(_ error: Error)
 }

@@ -13,7 +13,18 @@ class HomeInteractor {
 
 extension HomeInteractor: PresenterToInteractorProtocol {
     
-    func fetchData() {
-        // TODO: API Calls
+    @MainActor func fetchUsers() {
+        guard let url = URL(string: "https://randomuser.me/api/?results=10") else { return }
+        
+        Task {
+            do {
+                let userResponseModel: UserResponse = try await APIManager.shared.getData(fromUrl: url)
+                guard let users = userResponseModel.results else { return }
+                presenter?.didSuccessfullyReceivedUsers(users)
+                
+            } catch {
+                presenter?.didFailToReceiveUsersData(error)
+            }
+        }
     }
 }

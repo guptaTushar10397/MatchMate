@@ -20,7 +20,7 @@ extension HomeInteractor: HomePresenterToInteractorProtocol {
     
     @MainActor func fetchUsers() {
         
-        if let users = self.getUsersFromDB(),
+        if let users = self.fetchUsersFromDatabaseIfAvailable(),
            !users.isEmpty {
             presenter?.didSuccessfullyReceivedUsers(users)
         } else {
@@ -46,7 +46,7 @@ extension HomeInteractor: HomePresenterToInteractorProtocol {
 
 private extension HomeInteractor {
     
-    func getUsersFromDB() -> [User]? {
+    func fetchUsersFromDatabaseIfAvailable() -> [User]? {
         let users: [User]? = coreDataManager?.fetchAllUsers()
         return users
     }

@@ -9,17 +9,42 @@ import Foundation
 
 class DetailInteractor {
     weak var presenter: DetailInteractorToPresenterProtocol?
-    private var user: User
+    var coreDataManager: CoreDataManagerProtocol?
     
-    init(_ user: User) {
-        self.user = user
+    private var userID: String
+    
+    init(_ userID: String, coreDataManager: CoreDataManagerProtocol) {
+        self.userID = userID
+        self.coreDataManager = coreDataManager
+        
+        if let manager = coreDataManager as? CoreDataManager {
+            manager.registerInteractor(self)
+        }
     }
     
+    deinit {
+        if let manager = coreDataManager as? CoreDataManager {
+            manager.unregisterInteractor(self)
+        }
+    }
 }
 
 extension DetailInteractor: DetailPresenterToInteractorProtocol {
     
     func fetchUser() {
-        presenter?.didSuccessfullyReceivedUser(self.user)
+        guard let user = coreDataManager?.fetchUserFor(userID: userID) else { return }
+        presenter?.didSuccessfullyReceivedUser(user)
+    }
+    
+    func updateUserInCoreData(user: User) {
+        coreDataManager?.updateUserInCoreData(user: user)
     }
 }
+
+extension DetailInteractor: CoreDataManagerToInterctorProtocol {
+    
+    func coreDataDidUpdate() {
+        fetchUser()
+    }
+}
+

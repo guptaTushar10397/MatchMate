@@ -29,6 +29,7 @@ protocol CoreDataManagerProtocol: AnyObject {
     func registerInteractor(_ interactor: CoreDataManagerToInterctorProtocol)
     func unregisterInteractor(_ interactor: CoreDataManagerToInterctorProtocol)
     func fetchAllUsers() -> [User]
+    func fetchUserFor(userID id: String) -> User?
     func saveUsersToCoreData(users: [User])
     func updateUserInCoreData(user: User)
 }
@@ -61,6 +62,25 @@ extension CoreDataManager: CoreDataManagerProtocol {
         } catch {
             print("Failed to fetch users from Core Data: \(error.localizedDescription)")
             return []
+        }
+    }
+    
+    func fetchUserFor(userID id: String) -> User? {
+        let fetchRequest: NSFetchRequest<CDUser> = CDUser.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", id)
+        
+        do {
+            let results = try viewContext.fetch(fetchRequest)
+            
+            if let cdUser = results.first {
+                return CDUserWrapper.convertToUser(cdUser: cdUser)
+            } else {
+                return nil
+            }
+            
+        } catch {
+            print("Failed to fetch CDUser: \(error.localizedDescription)")
+            return nil
         }
     }
     

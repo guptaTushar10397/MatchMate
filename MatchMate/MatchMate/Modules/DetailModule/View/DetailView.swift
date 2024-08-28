@@ -57,7 +57,7 @@ struct DetailView: View {
             } else {
                 HStack(spacing: 40) {
                     Button {
-                        
+                        presenter.viewDidTapOnRejectActionButton()
                     } label: {
                         Image(systemName: "xmark")
                             .font(.system(size: 24))
@@ -68,7 +68,7 @@ struct DetailView: View {
                     }
                     
                     Button {
-                        
+                        presenter.viewDidTapOnAcceptActionButton()
                     } label: {
                         Image(systemName: "checkmark")
                             .font(.system(size: 24))
@@ -90,5 +90,5 @@ struct DetailView: View {
 }
 
 #Preview {
-    DetailRouter.createModule(withUser: User.mockUserRejected)
+    DetailRouter.createModule(forUserId: User.mockUserRejected.id)
 }

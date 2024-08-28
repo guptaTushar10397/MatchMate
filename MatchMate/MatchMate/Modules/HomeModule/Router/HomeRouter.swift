@@ -28,6 +28,6 @@ class HomeRouter {
 extension HomeRouter: HomePresenterToRouterProtocol {
     
     func navigateToDetail(for user: User) -> AnyView {
-        return AnyView(DetailRouter.createModule(withUser: user))
+        return AnyView(DetailRouter.createModule(forUserId: user.id))
     }
 }

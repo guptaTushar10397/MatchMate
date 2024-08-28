@@ -24,6 +24,7 @@ extension DetailPresenter: DetailViewToPresenterProtocol {
         guard let user = self.user else { return }
         var newObject = user
         newObject.userAction = .accepted
+        self.user = newObject
         interactor?.updateUserInCoreData(user: newObject)
     }
     
@@ -31,6 +32,7 @@ extension DetailPresenter: DetailViewToPresenterProtocol {
         guard let user = self.user else { return }
         var newObject = user
         newObject.userAction = .rejected
+        self.user = newObject
         interactor?.updateUserInCoreData(user: newObject)
     }
 }

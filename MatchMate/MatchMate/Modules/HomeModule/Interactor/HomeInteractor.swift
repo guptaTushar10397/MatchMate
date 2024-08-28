@@ -13,15 +13,6 @@ class HomeInteractor {
     
     init(coreDataManager: CoreDataManagerProtocol) {
         self.coreDataManager = coreDataManager
-        if let manager = coreDataManager as? CoreDataManager {
-            manager.registerInteractor(self)
-        }
-    }
-    
-    deinit {
-        if let manager = coreDataManager as? CoreDataManager {
-            manager.unregisterInteractor(self)
-        }
     }
 }
 
@@ -29,17 +20,21 @@ extension HomeInteractor: HomePresenterToInteractorProtocol {
     
     @MainActor func fetchUsers() {
         
-        fetchUsersFromDBIfAvailable()
-        
-        guard let url = URL(string: "https://randomuser.me/api/?results=10") else { return }
-        
-        Task {
-            do {
-                let userResponseModel: UserResponse = try await APIManager.shared.getData(fromUrl: url)
-                guard let users = userResponseModel.results else { return }
-                coreDataManager?.saveUsersToCoreData(users: users)
-            } catch {
-                presenter?.didFailToReceiveUsersData(error)
+        if let users = self.getUsersFromDB(),
+           !users.isEmpty {
+            presenter?.didSuccessfullyReceivedUsers(users)
+        } else {
+            guard let url = URL(string: "https://randomuser.me/api/?results=10") else { return }
+            
+            Task {
+                do {
+                    let userResponseModel: UserResponse = try await APIManager.shared.getData(fromUrl: url)
+                    guard let users = userResponseModel.results else { return }
+                    coreDataManager?.saveUsersToCoreData(users: users)
+                    presenter?.didSuccessfullyReceivedUsers(users)
+                } catch {
+                    presenter?.didFailToReceiveUsersData(error)
+                }
             }
         }
     }
@@ -49,25 +44,10 @@ extension HomeInteractor: HomePresenterToInteractorProtocol {
     }
 }
 
-extension HomeInteractor: CoreDataManagerToInterctorProtocol {
-    
-    func coreDataDidUpdate() {
-        fetchUsersFromDBIfAvailable()
-    }
-}
-
 private extension HomeInteractor {
     
-    func fetchUsersFromDBIfAvailable() {
-        let savedUsers = getUsersFromDB()
-        
-        if !savedUsers.isEmpty {
-            presenter?.didSuccessfullyReceivedUsers(savedUsers)
-        }
-    }
-    
-    func getUsersFromDB() -> [User] {
-        let users: [User] = coreDataManager?.fetchAllUsers() ?? []
+    func getUsersFromDB() -> [User]? {
+        let users: [User]? = coreDataManager?.fetchAllUsers()
         return users
     }
 }

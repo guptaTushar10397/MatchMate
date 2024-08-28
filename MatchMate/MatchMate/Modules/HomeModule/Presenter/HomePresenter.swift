@@ -14,16 +14,11 @@ class HomePresenter: ObservableObject {
     
     @Published var users: [User] = []
     @Published var isLoading: Bool = false
-    
-    private var hasLoaded: Bool = false
 }
 
 extension HomePresenter: HomeViewToPresenterProtocol {
     
     func viewDidLoad() {
-        guard !hasLoaded else { return }
-        hasLoaded = true
-        
         fetchData()
     }
     
@@ -35,6 +30,7 @@ extension HomePresenter: HomeViewToPresenterProtocol {
         guard let indexOfUser = users.firstIndex(where: {$0.id == user.id}) else { return }
         var newObject = users[indexOfUser]
         newObject.userAction = .accepted
+        users[indexOfUser] = newObject
         interactor?.updateUserInCoreData(user: newObject)
     }
     
@@ -42,6 +38,7 @@ extension HomePresenter: HomeViewToPresenterProtocol {
         guard let indexOfUser = users.firstIndex(where: {$0.id == user.id}) else { return }
         var newObject = users[indexOfUser]
         newObject.userAction = .rejected
+        users[indexOfUser] = newObject
         interactor?.updateUserInCoreData(user: newObject)
     }
 }
@@ -49,7 +46,7 @@ extension HomePresenter: HomeViewToPresenterProtocol {
 extension HomePresenter: HomeInteractorToPresenterProtocol {
     func didSuccessfullyReceivedUsers(_ users: [User]) {
         isLoading = false
-        self.users = users
+        self.users = users.sorted(by: {($0.name?.fullName ?? "").lowercased() < ($1.name?.fullName ?? "").lowercased() })
     }
     
     func didFailToReceiveUsersData(_ error: any Error) {

@@ -16,16 +16,6 @@ class DetailInteractor {
     init(_ userID: String, coreDataManager: CoreDataManagerProtocol) {
         self.userID = userID
         self.coreDataManager = coreDataManager
-        
-        if let manager = coreDataManager as? CoreDataManager {
-            manager.registerInteractor(self)
-        }
-    }
-    
-    deinit {
-        if let manager = coreDataManager as? CoreDataManager {
-            manager.unregisterInteractor(self)
-        }
     }
 }
 
@@ -38,13 +28,6 @@ extension DetailInteractor: DetailPresenterToInteractorProtocol {
     
     func updateUserInCoreData(user: User) {
         coreDataManager?.updateUserInCoreData(user: user)
-    }
-}
-
-extension DetailInteractor: CoreDataManagerToInterctorProtocol {
-    
-    func coreDataDidUpdate() {
-        fetchUser()
     }
 }
 

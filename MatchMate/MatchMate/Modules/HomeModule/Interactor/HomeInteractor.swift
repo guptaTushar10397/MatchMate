@@ -9,6 +9,20 @@ import Foundation
 
 class HomeInteractor {
     weak var presenter: HomeInteractorToPresenterProtocol?
+    var coreDataManager: CoreDataManagerProtocol?
+    
+    init(coreDataManager: CoreDataManagerProtocol) {
+        self.coreDataManager = coreDataManager
+        if let manager = coreDataManager as? CoreDataManager {
+            manager.registerInteractor(self)
+        }
+    }
+    
+    deinit {
+        if let manager = coreDataManager as? CoreDataManager {
+            manager.unregisterInteractor(self)
+        }
+    }
 }
 
 extension HomeInteractor: HomePresenterToInteractorProtocol {
@@ -26,5 +40,12 @@ extension HomeInteractor: HomePresenterToInteractorProtocol {
                 presenter?.didFailToReceiveUsersData(error)
             }
         }
+    }
+}
+
+extension HomeInteractor: CoreDataManagerToInterctorProtocol {
+    
+    func coreDataDidUpdate() {
+        
     }
 }

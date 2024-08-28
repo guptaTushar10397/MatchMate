@@ -11,9 +11,9 @@ class HomeRouter {
     
     static func createModule() -> some View {
         let router = HomeRouter()
-        let interactor = HomeInteractor()
         let presenter = HomePresenter()
-        
+        let coreDataManager = CoreDataManager()
+        let interactor = HomeInteractor(coreDataManager: coreDataManager)
         let view = HomeView(presenter: presenter)
         
         // Dependency Injection

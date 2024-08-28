@@ -13,6 +13,7 @@ class HomePresenter: ObservableObject {
     var router: HomePresenterToRouterProtocol?
     
     @Published var users: [User] = []
+    @Published var isLoading: Bool = false
     
     private var hasLoaded: Bool = false
 }
@@ -51,10 +52,12 @@ extension HomePresenter: HomeViewToPresenterProtocol {
 
 extension HomePresenter: HomeInteractorToPresenterProtocol {
     func didSuccessfullyReceivedUsers(_ users: [User]) {
+        isLoading = false
         self.users = users
     }
     
     func didFailToReceiveUsersData(_ error: any Error) {
+        isLoading = false
         print("Failed to fetch data, Error: \(error.localizedDescription)")
     }
 }
@@ -62,6 +65,7 @@ extension HomePresenter: HomeInteractorToPresenterProtocol {
 private extension HomePresenter {
     
     func fetchData() {
+        isLoading = true
         interactor?.fetchUsers()
     }
 }

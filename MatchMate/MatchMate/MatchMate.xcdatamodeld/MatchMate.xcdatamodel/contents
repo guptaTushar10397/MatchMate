@@ -1,2 +1,40 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22758" systemVersion="23G93" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier=""/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22758" systemVersion="23G93" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="CDBackendID" representedClassName="CDBackendID" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="value" optional="YES" attributeType="String"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDUser" inverseName="backendID" inverseEntity="CDUser"/>
+    </entity>
+    <entity name="CDLocation" representedClassName="CDLocation" syncable="YES" codeGenerationType="class">
+        <attribute name="city" optional="YES" attributeType="String"/>
+        <attribute name="country" optional="YES" attributeType="String"/>
+        <attribute name="state" optional="YES" attributeType="String"/>
+        <relationship name="street" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDStreet" inverseName="location" inverseEntity="CDStreet"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDUser" inverseName="location" inverseEntity="CDUser"/>
+    </entity>
+    <entity name="CDName" representedClassName="CDName" syncable="YES" codeGenerationType="class">
+        <attribute name="first" optional="YES" attributeType="String"/>
+        <attribute name="last" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDUser" inverseName="name" inverseEntity="CDUser"/>
+    </entity>
+    <entity name="CDPicture" representedClassName="CDPicture" syncable="YES" codeGenerationType="class">
+        <attribute name="large" optional="YES" attributeType="String"/>
+        <attribute name="medium" optional="YES" attributeType="String"/>
+        <attribute name="thumbnail" optional="YES" attributeType="String"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDUser" inverseName="picture" inverseEntity="CDUser"/>
+    </entity>
+    <entity name="CDStreet" representedClassName="CDStreet" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="number" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDLocation" inverseName="street" inverseEntity="CDLocation"/>
+    </entity>
+    <entity name="CDUser" representedClassName="CDUser" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="userAction" optional="YES" attributeType="String"/>
+        <relationship name="backendID" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDBackendID" inverseName="user" inverseEntity="CDBackendID"/>
+        <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDLocation" inverseName="user" inverseEntity="CDLocation"/>
+        <relationship name="name" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDName" inverseName="user" inverseEntity="CDName"/>
+        <relationship name="picture" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDPicture" inverseName="user" inverseEntity="CDPicture"/>
+    </entity>
+</model>

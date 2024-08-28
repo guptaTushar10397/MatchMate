@@ -28,6 +28,8 @@ class WeakReferenceToInteractor: Hashable {
 protocol CoreDataManagerProtocol: AnyObject {
     func registerInteractor(_ interactor: CoreDataManagerToInterctorProtocol)
     func unregisterInteractor(_ interactor: CoreDataManagerToInterctorProtocol)
+    func fetchAllUsers() -> [User]
+    func saveUsersToCoreData(users: [User])
 }
 
 protocol CoreDataManagerToInterctorProtocol: AnyObject {
@@ -47,6 +49,26 @@ extension CoreDataManager: CoreDataManagerProtocol {
     
     func unregisterInteractor(_ interactor: CoreDataManagerToInterctorProtocol) {
         interactors.remove(WeakReferenceToInteractor(interactor))
+    }
+    
+    func fetchAllUsers() -> [User] {
+        let fetchRequest: NSFetchRequest<CDUser> = CDUser.fetchRequest()
+        
+        do {
+            let cdUsers = try viewContext.fetch(fetchRequest)
+            return cdUsers.map { CDUserWrapper.convertToUser(cdUser: $0) }
+        } catch {
+            print("Failed to fetch users from Core Data: \(error.localizedDescription)")
+            return []
+        }
+    }
+    
+    func saveUsersToCoreData(users: [User]) {
+        users.forEach { user in
+            _ = CDUserWrapper.convertToCDUser(user: user, context: viewContext)
+        }
+        
+        saveContext()
     }
 }
 

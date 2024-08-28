@@ -28,14 +28,20 @@ class HomeInteractor {
 extension HomeInteractor: HomePresenterToInteractorProtocol {
     
     @MainActor func fetchUsers() {
+        // First fetch User from Database
+        let savedUsers = getUsersFromDB()
+        
+        if !savedUsers.isEmpty {
+            presenter?.didSuccessfullyReceivedUsers(savedUsers)
+        }
+        
         guard let url = URL(string: "https://randomuser.me/api/?results=10") else { return }
         
         Task {
             do {
                 let userResponseModel: UserResponse = try await APIManager.shared.getData(fromUrl: url)
                 guard let users = userResponseModel.results else { return }
-                presenter?.didSuccessfullyReceivedUsers(users)
-                
+                coreDataManager?.saveUsersToCoreData(users: users)
             } catch {
                 presenter?.didFailToReceiveUsersData(error)
             }
@@ -46,6 +52,18 @@ extension HomeInteractor: HomePresenterToInteractorProtocol {
 extension HomeInteractor: CoreDataManagerToInterctorProtocol {
     
     func coreDataDidUpdate() {
+        let savedUsers = getUsersFromDB()
         
+        if !savedUsers.isEmpty {
+            presenter?.didSuccessfullyReceivedUsers(savedUsers)
+        }
+    }
+}
+
+private extension HomeInteractor {
+    
+    func getUsersFromDB() -> [User] {
+        let users: [User] = coreDataManager?.fetchAllUsers() ?? []
+        return users
     }
 }

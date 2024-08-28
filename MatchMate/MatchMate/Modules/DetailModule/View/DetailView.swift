@@ -48,7 +48,7 @@ struct DetailView: View {
                 RoundedRectangle(cornerRadius: 10)
                     .foregroundStyle(.teal)
                     .overlay {
-                        Text(userAction.rawValue)
+                        Text(userAction.displayValue)
                             .font(.title2)
                             .fontWeight(.medium)
                             .foregroundStyle(.white)

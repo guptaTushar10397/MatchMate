@@ -21,6 +21,7 @@ protocol HomePresenterToRouterProtocol: AnyObject {
 
 protocol HomePresenterToInteractorProtocol: AnyObject {
     func fetchUsers()
+    func updateUserInCoreData(user: User)
 }
 
 protocol HomeInteractorToPresenterProtocol: AnyObject {

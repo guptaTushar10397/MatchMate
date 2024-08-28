@@ -32,21 +32,17 @@ extension HomePresenter: HomeViewToPresenterProtocol {
     }
     
     func handleAcceptAction(for user: User) {
-        guard let indexOfUser = users.firstIndex(where: {$0.id == user.id}) else {
-            return
-        }
+        guard let indexOfUser = users.firstIndex(where: {$0.id == user.id}) else { return }
         var newObject = users[indexOfUser]
         newObject.userAction = .accepted
-        users[indexOfUser] = newObject
+        interactor?.updateUserInCoreData(user: newObject)
     }
     
     func handleRejectAction(for user: User) {
-        guard let indexOfUser = users.firstIndex(where: {$0.id == user.id}) else {
-            return
-        }
+        guard let indexOfUser = users.firstIndex(where: {$0.id == user.id}) else { return }
         var newObject = users[indexOfUser]
         newObject.userAction = .rejected
-        users[indexOfUser] = newObject
+        interactor?.updateUserInCoreData(user: newObject)
     }
 }
 

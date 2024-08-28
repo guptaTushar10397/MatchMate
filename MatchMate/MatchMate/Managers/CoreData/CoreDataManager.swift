@@ -30,6 +30,7 @@ protocol CoreDataManagerProtocol: AnyObject {
     func unregisterInteractor(_ interactor: CoreDataManagerToInterctorProtocol)
     func fetchAllUsers() -> [User]
     func saveUsersToCoreData(users: [User])
+    func updateUserInCoreData(user: User)
 }
 
 protocol CoreDataManagerToInterctorProtocol: AnyObject {
@@ -69,6 +70,24 @@ extension CoreDataManager: CoreDataManagerProtocol {
         }
         
         saveContext()
+    }
+    
+    func updateUserInCoreData(user: User) {
+        let fetchRequest: NSFetchRequest<CDUser> = CDUser.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", user.id)
+        
+        do {
+            let results = try viewContext.fetch(fetchRequest)
+            
+            if let cdUser = results.first {
+                // Update the existing CDUser object
+                cdUser.userAction = user.userAction?.rawValue
+                saveContext()
+            }
+            
+        } catch {
+            print("Failed to fetch or update CDUser: \(error.localizedDescription)")
+        }
     }
 }
 

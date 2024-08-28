@@ -11,9 +11,9 @@ class HomeRouter {
     
     static func createModule() -> some View {
         let router = HomeRouter()
-        let interactor = HomeInteractor()
         let presenter = HomePresenter()
-        
+        let coreDataManager = CoreDataManager()
+        let interactor = HomeInteractor(coreDataManager: coreDataManager)
         let view = HomeView(presenter: presenter)
         
         // Dependency Injection
@@ -28,6 +28,6 @@ class HomeRouter {
 extension HomeRouter: HomePresenterToRouterProtocol {
     
     func navigateToDetail(for user: User) -> AnyView {
-        return AnyView(DetailRouter.createModule(withUser: user))
+        return AnyView(DetailRouter.createModule(forUserId: user.id))
     }
 }

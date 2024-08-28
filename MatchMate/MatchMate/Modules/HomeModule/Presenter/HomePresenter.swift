@@ -13,16 +13,12 @@ class HomePresenter: ObservableObject {
     var router: HomePresenterToRouterProtocol?
     
     @Published var users: [User] = []
-    
-    private var hasLoaded: Bool = false
+    @Published var isLoading: Bool = false
 }
 
 extension HomePresenter: HomeViewToPresenterProtocol {
     
     func viewDidLoad() {
-        guard !hasLoaded else { return }
-        hasLoaded = true
-        
         fetchData()
     }
     
@@ -31,30 +27,30 @@ extension HomePresenter: HomeViewToPresenterProtocol {
     }
     
     func handleAcceptAction(for user: User) {
-        guard let indexOfUser = users.firstIndex(where: {$0.id == user.id}) else {
-            return
-        }
+        guard let indexOfUser = users.firstIndex(where: {$0.id == user.id}) else { return }
         var newObject = users[indexOfUser]
         newObject.userAction = .accepted
         users[indexOfUser] = newObject
+        interactor?.updateUserInCoreData(user: newObject)
     }
     
     func handleRejectAction(for user: User) {
-        guard let indexOfUser = users.firstIndex(where: {$0.id == user.id}) else {
-            return
-        }
+        guard let indexOfUser = users.firstIndex(where: {$0.id == user.id}) else { return }
         var newObject = users[indexOfUser]
         newObject.userAction = .rejected
         users[indexOfUser] = newObject
+        interactor?.updateUserInCoreData(user: newObject)
     }
 }
 
 extension HomePresenter: HomeInteractorToPresenterProtocol {
     func didSuccessfullyReceivedUsers(_ users: [User]) {
-        self.users = users
+        isLoading = false
+        self.users = users.sorted(by: {($0.name?.fullName ?? "").lowercased() < ($1.name?.fullName ?? "").lowercased() })
     }
     
     func didFailToReceiveUsersData(_ error: any Error) {
+        isLoading = false
         print("Failed to fetch data, Error: \(error.localizedDescription)")
     }
 }
@@ -62,6 +58,7 @@ extension HomePresenter: HomeInteractorToPresenterProtocol {
 private extension HomePresenter {
     
     func fetchData() {
+        isLoading = true
         interactor?.fetchUsers()
     }
 }

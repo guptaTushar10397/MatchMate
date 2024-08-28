@@ -12,20 +12,28 @@ struct HomeView: View {
     
     var body: some View {
         NavigationView {
-            ScrollView {
-                LazyVStack {
-                    ForEach(presenter.users) { user in
-                        NavigationLink {
-                            presenter.navigateToDetail(for: user)
-                        } label: {
-                            CardView(user: user,
-                                     didTapAcceptButton: { presenter.handleAcceptAction(for: user) },
-                                     didTaponRejectButton: { presenter.handleRejectAction(for: user) }
-                            )
-                                .padding(.horizontal)
+            ZStack {
+                if presenter.isLoading {
+                    ProgressView("Loading...")
+                        .progressViewStyle(CircularProgressViewStyle())
+                        .scaleEffect(1.5)
+                } else {
+                    ScrollView {
+                        LazyVStack {
+                            ForEach(presenter.users) { user in
+                                NavigationLink {
+                                    presenter.navigateToDetail(for: user)
+                                } label: {
+                                    CardView(user: user,
+                                             didTapAcceptButton: { presenter.handleAcceptAction(for: user) },
+                                             didTaponRejectButton: { presenter.handleRejectAction(for: user) }
+                                    )
+                                        .padding(.horizontal)
+                                }
+                            }
+                            .padding(.vertical)
                         }
                     }
-                    .padding(.vertical)
                 }
             }
             .navigationTitle("Profile Matches")

@@ -19,6 +19,22 @@ extension DetailPresenter: DetailViewToPresenterProtocol {
     func viewDidLoad() {
         interactor?.fetchUser()
     }
+    
+    func viewDidTapOnAcceptActionButton() {
+        guard let user = self.user else { return }
+        var newObject = user
+        newObject.userAction = .accepted
+        self.user = newObject
+        interactor?.updateUserInCoreData(user: newObject)
+    }
+    
+    func viewDidTapOnRejectActionButton() {
+        guard let user = self.user else { return }
+        var newObject = user
+        newObject.userAction = .rejected
+        self.user = newObject
+        interactor?.updateUserInCoreData(user: newObject)
+    }
 }
 
 extension DetailPresenter: DetailInteractorToPresenterProtocol {

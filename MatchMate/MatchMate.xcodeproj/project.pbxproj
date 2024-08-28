@@ -23,6 +23,10 @@
 		2825157B2C7E5D6F00DDC5E3 /* DetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2825157A2C7E5D6F00DDC5E3 /* DetailInteractor.swift */; };
 		2825157D2C7E5DA900DDC5E3 /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2825157C2C7E5DA900DDC5E3 /* DetailPresenter.swift */; };
 		2825157F2C7E5DFB00DDC5E3 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2825157E2C7E5DFB00DDC5E3 /* DetailView.swift */; };
+		282515832C7E800700DDC5E3 /* MatchMate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 282515812C7E800700DDC5E3 /* MatchMate.xcdatamodeld */; };
+		282515852C7E80C900DDC5E3 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282515842C7E80C900DDC5E3 /* CoreDataManager.swift */; };
+		282515882C7E843F00DDC5E3 /* CoreDataPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282515872C7E843F00DDC5E3 /* CoreDataPersistence.swift */; };
+		282E403B2C7F00F6002EA504 /* CDUserWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282E403A2C7F00F6002EA504 /* CDUserWrapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +47,10 @@
 		2825157A2C7E5D6F00DDC5E3 /* DetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInteractor.swift; sourceTree = "<group>"; };
 		2825157C2C7E5DA900DDC5E3 /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
 		2825157E2C7E5DFB00DDC5E3 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		282515822C7E800700DDC5E3 /* MatchMate.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MatchMate.xcdatamodel; sourceTree = "<group>"; };
+		282515842C7E80C900DDC5E3 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		282515872C7E843F00DDC5E3 /* CoreDataPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataPersistence.swift; sourceTree = "<group>"; };
+		282E403A2C7F00F6002EA504 /* CDUserWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDUserWrapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +88,7 @@
 				282515802C7E6E4000DDC5E3 /* Models */,
 				28094F7C2C7DBA7E00CCC80A /* Modules */,
 				28094F7B2C7DBA6900CCC80A /* Resources */,
+				282515812C7E800700DDC5E3 /* MatchMate.xcdatamodeld */,
 			);
 			path = MatchMate;
 			sourceTree = "<group>";
@@ -175,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				282515672C7E441E00DDC5E3 /* APIManager.swift */,
+				282515862C7E840400DDC5E3 /* CoreData */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -237,6 +247,24 @@
 				282515692C7E44F800DDC5E3 /* UserResonseModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		282515862C7E840400DDC5E3 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				282E40392C7F00DE002EA504 /* CDWrapper */,
+				282515872C7E843F00DDC5E3 /* CoreDataPersistence.swift */,
+				282515842C7E80C900DDC5E3 /* CoreDataManager.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		282E40392C7F00DE002EA504 /* CDWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				282E403A2C7F00F6002EA504 /* CDUserWrapper.swift */,
+			);
+			path = CDWrapper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,15 +341,19 @@
 				282515792C7E5D3F00DDC5E3 /* DetailRouter.swift in Sources */,
 				2825156C2C7E54A800DDC5E3 /* CardView.swift in Sources */,
 				2825157F2C7E5DFB00DDC5E3 /* DetailView.swift in Sources */,
+				282515882C7E843F00DDC5E3 /* CoreDataPersistence.swift in Sources */,
 				2825157B2C7E5D6F00DDC5E3 /* DetailInteractor.swift in Sources */,
 				28094F6D2C7CED5A00CCC80A /* HomeView.swift in Sources */,
+				282515832C7E800700DDC5E3 /* MatchMate.xcdatamodeld in Sources */,
 				28094F882C7DBFF800CCC80A /* HomeRouter.swift in Sources */,
+				282E403B2C7F00F6002EA504 /* CDUserWrapper.swift in Sources */,
 				28094F802C7DBAD200CCC80A /* HomeProtocol.swift in Sources */,
 				28094F8C2C7DC0C000CCC80A /* HomePresenter.swift in Sources */,
 				282515752C7E5BF000DDC5E3 /* DetailProtocol.swift in Sources */,
 				28094F8A2C7DC04E00CCC80A /* HomeInteractor.swift in Sources */,
 				2825157D2C7E5DA900DDC5E3 /* DetailPresenter.swift in Sources */,
 				28094F6B2C7CED5A00CCC80A /* MatchMateApp.swift in Sources */,
+				282515852C7E80C900DDC5E3 /* CoreDataManager.swift in Sources */,
 				282515682C7E441E00DDC5E3 /* APIManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -528,6 +560,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		282515812C7E800700DDC5E3 /* MatchMate.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				282515822C7E800700DDC5E3 /* MatchMate.xcdatamodel */,
+			);
+			currentVersion = 282515822C7E800700DDC5E3 /* MatchMate.xcdatamodel */;
+			path = MatchMate.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 28094F5F2C7CED5A00CCC80A /* Project object */;
 }

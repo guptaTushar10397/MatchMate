@@ -8,8 +8,17 @@
 import Foundation
 
 enum UserAction: String {
-    case accepted = "Accepted"
-    case rejected = "Declined"
+    case accepted = "accepted"
+    case rejected = "rejected"
+    
+    var displayValue: String {
+        switch self {
+        case .accepted:
+            "Accepted"
+        case .rejected:
+            "Declined"
+        }
+    }
 }
 
 // MARK: - UserResponse Model
@@ -21,10 +30,10 @@ struct UserResponse: Codable {
 struct User: Codable, Identifiable {
     var id: String = UUID().uuidString
     var userAction: UserAction? = nil
-    let name: Name?
-    let location: Location?
-    let picture: Picture?
-    let backendID: BackendID?
+    var name: Name?
+    var location: Location?
+    var picture: Picture?
+    var backendID: BackendID?
     
     enum CodingKeys: String, CodingKey {
         case backendID = "id"
@@ -44,7 +53,8 @@ struct User: Codable, Identifiable {
         self.picture = try container.decodeIfPresent(Picture.self, forKey: .picture)
     }
     
-    init(userAction: UserAction? = nil, name: Name?, location: Location?, picture: Picture?, backendID: BackendID?) {
+    init(id: String = UUID().uuidString, userAction: UserAction? = nil, name: Name? = nil, location: Location? = nil, picture: Picture? = nil, backendID: BackendID? = nil) {
+        self.id = id
         self.userAction = userAction
         self.name = name
         self.location = location
@@ -108,14 +118,14 @@ struct Picture: Codable {
 
 // MARK: - Street Model
 struct Street: Codable {
-    let number: Int?
-    let name: String?
+    var number: Int?
+    var name: String?
 }
 
 // MARK: - ID Model
 struct BackendID: Codable {
-    let name: String?
-    let value: String?
+    var name: String?
+    var value: String?
 }
 
 // MARK: - Mock User
